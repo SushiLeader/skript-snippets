@@ -2,21 +2,21 @@ on death of player:
     if victim is a player:
         if attacker is a player:
             # Set both people hearts if its not set lol
-            if {hearts::%attacker%} is not set:
-                set {hearts::%attacker%} to 10
+            if {hearts::%uuid of attacker%} is not set:
+                set {hearts::%uuid of attacker%} to 10
             
-            if {hearts::%victim%} is not set:
-                set {hearts::%victim%} to 10
+            if {hearts::%uuid of victim%} is not set:
+                set {hearts::%uuid of victim%} to 10
             
             # Basic lifesteal stuffs
-            add 1 to {hearts::%attacker%}
-            remove 1 from {hearts::%victim%}
+            add 1 to {hearts::%uuid of attacker%}
+            remove 1 from {hearts::%uuid of victim%}
 
             # Ban the player if all his health gone lol (rip for this guy)
-            if {hearts::%victim%} is 0:
+            if {hearts::%uuid of victim%} is 0:
                 ban victim due to "You have lose all your hearts. You can revive in 3 days." for 3 days
-                set {hearts::%victim%} to 5
+                set {hearts::%uuid of victim%} to 5
             
             # Set max health of both player
-            set max health of attacker to {hearts::%attacker%}
-            set max health of victim to {hearts::%victim%}
+            set max health of attacker to {hearts::%uuid of attacker%}
+            set max health of victim to {hearts::%uuid of victim%}
